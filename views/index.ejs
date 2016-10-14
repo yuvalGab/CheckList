@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CheckList</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <div class="wrapper">
+          <div class="header">
+              <h1 id="headline">CheckList</h1>
+              <form action="/add" method="POST">
+                  <input id="add-field" type="text" name="new_task">
+                  <input id="add-btn" type="submit" value="add a new task">
+              </form>
+          </div>
+          <div class="tasks-list">
+              <% tasks.forEach(function(tasks){ %>
+                <div class="new-task">   
+                    <input class="checkbox" type="checkbox" rel="<%= tasks.done %>">
+                    <p class="task-text"><%= tasks.task %></p>
+                </div>  
+              <% }); %>
+              <form action="/save" method="POST">
+                  <input id="temp1" name="text" style="display:none;" type="text">
+                  <input id="temp2" name="checked" style="display:none;" type="text">
+                  <input id="save" style="display:none;" type="submit">
+              </form>
+          </div>
+          <div class="controlers">
+                <form action="/delete" method="POST">
+                    <input id="delete-btn" type="submit" value="delete all done tasks">
+                </form>
+          </div>
+          <div class="status">
+                <p class="status-text">total tasks: <%= tasks.length %></p>
+                <p class="status-text"></p>
+                <p class="status-text"></p>
+          </div>
+      </div>
+      
+      <script src="/jquery/dist/jquery.js"></script>
+      <script src="/javascripts/script.js"></script>
+      
+  </body>
+</html>
